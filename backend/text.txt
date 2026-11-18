@@ -1,0 +1,4 @@
+user_name=aungnayzar805_db_user
+password = 6MnjJw2Qgb8TUmkV
+
+connnection = mongodb+srv://aungnayzar805_db_user:6MnjJw2Qgb8TUmkV@cluster0.3uoj9io.mongodb.net/
