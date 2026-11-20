@@ -7,13 +7,15 @@ var cookieParser = require('cookie-parser')
 dotenv.config();
 
 const app = express();
+const allowedOrigins = [
+    "http://localhost:5173",
+    "https://newmedia-world-ly24zfmhi-gg-917a.vercel.app"
+];
+
 app.use(cors({
-
-
-        origin: "http://localhost:5173",
-        credentials: true
-    }   
-));
+    origin: allowedOrigins,
+    credentials: true
+}));
 const newsRouter = require("./router/News");
 const usersRouter = require("./router/Users");
 
@@ -22,7 +24,7 @@ const mongoose = require("mongoose");
 const path = require("node:path");
 
 
-const mongoURI = "mongodb+srv://aungnayzar805_db_user:6MnjJw2Qgb8TUmkV@cluster0.3uoj9io.mongodb.net/"
+const mongoURI = process.env.MONGODB_URL;
 
 app.use(morgan("dev"));
 app.use(express.json());
