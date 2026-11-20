@@ -1,0 +1,6 @@
+exclude:
+  - backend/node_modules
+  - backend/vendor
+  - backend/package.json
+  - backend/package-lock.json
+  - backend/.env
