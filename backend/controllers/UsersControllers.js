@@ -1,13 +1,12 @@
 const User = require("../models/User");
 const {mongoose} = require("mongoose");
 const createToken  = require("../JWT/createToken");
-
 const cookieOptions = {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",
-    sameSite: "strict"
+    sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+    path: "/"
 };
-
 const Userscontroller = {
     current: async (req, res) => {
         try {
