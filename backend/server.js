@@ -7,16 +7,26 @@ var cookieParser = require('cookie-parser')
 dotenv.config();
 
 const app = express();
-const allowedOrigins = [
-    "http://localhost:5173",
-    "https://newmedia-world.vercel.app",
-    "https://newmedia-world-ly24zfmhi-gg-917a.vercel.app",
-    "https://newmedia-world-flywyzt5-gg-917a.vercel.app"
-];
+
 
 app.use(cors({
-    origin: allowedOrigins,
-    credentials: true
+    origin: function (origin, callback) {
+        const allowedOrigins = [
+            "http://localhost:5173",
+            "https://newmedia-world.vercel.app",
+            "https://newmedia-world-ly24zfmhi-gg-917a.vercel.app",
+            "https://newmedia-world-flywyzt5-gg-917a.vercel.app"
+        ];
+
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error("Not allowed by CORS"));
+        }
+    },
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"]
 }));
 const newsRouter = require("./router/News");
 const usersRouter = require("./router/Users");
