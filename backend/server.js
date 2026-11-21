@@ -9,7 +9,9 @@ dotenv.config();
 const app = express();
 const allowedOrigins = [
     "http://localhost:5173",
-    "https://newmedia-world-ly24zfmhi-gg-917a.vercel.app"
+    "https://newmedia-world.vercel.app",
+    "https://newmedia-world-ly24zfmhi-gg-917a.vercel.app",
+    "https://newmedia-world-flywyzt5-gg-917a.vercel.app"
 ];
 
 app.use(cors({
